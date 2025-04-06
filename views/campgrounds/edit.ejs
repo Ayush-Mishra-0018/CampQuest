@@ -1,0 +1,45 @@
+<% layout("./layouts/boiler.ejs") %>
+
+<div class="edit-form-container">
+    <h2>Edit Campground</h2>
+    <form action="/campgrounds/<%= back._id %>?_method=PATCH" method="post" class="needs-validation" novalidate>
+        
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" name="title" value="<%= back.title %>" id="name" required>
+            <div class="invalid-feedback">Title is required.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" min="0" name="price" value="<%= back.price %>" id="price" required
+                oninvalid="this.setCustomValidity(this.value === '' ? 'Price is required.' : 'Price must be a non-negative number.')"
+                oninput="this.setCustomValidity('')">
+            <div class="invalid-feedback">Price is required.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="des">Description</label>
+            <textarea class="form-control" name="description" id="des" rows="5" required><%= back.description %></textarea>
+            <div class="invalid-feedback">Description is required.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="img">Image URL</label>
+            <input type="text" class="form-control" name="image" value="<%= back.image %>" id="img" required>
+            <div class="invalid-feedback">Image URL is required.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" name="location" value="<%= back.location %>" id="location" required>
+            <div class="invalid-feedback">Location is required.</div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn-submit btn btn-primary">Submit</button>
+            <a href="/campgrounds" class="btn-back button-link btn btn-secondary">Back To Home Page</a>
+        </div>
+        
+    </form>
+</div>

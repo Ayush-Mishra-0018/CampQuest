@@ -1,0 +1,49 @@
+<% layout("./layouts/boiler.ejs") %>
+
+<div class="details-container">
+    <h1><%= background.title %></h1>
+    <p>📍 Location: <%= background.location %></p>
+    <img src="<%= background.image %>" alt="Image of <%= background.title %>">
+    <p>📝 Description: <%= background.description %></p>
+    <p>💰 Price: <%= background.price %></p>
+
+<div class="review-container">
+    <h2>Reviews</h2>
+    <% if (background.review.length > 0) { %>
+        <ul class="review-list">
+            <% background.review.forEach(review => { %>
+                <li>
+                    <p class="review-body">📝 <%= review.body %></p>
+                    <p class="review-rating">⭐ Rating: <%= review.rating %>/5</p>
+                </li>
+                <form action="/campgrounds/<%= background._id %>/review/<%= review._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+                
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p class="text-center text-muted">No reviews yet. Be the first to review! ✍️</p>
+    <% } %>
+</div>
+
+<!-- Review Submission Form -->
+<div class="review-form">
+    <form action="/campgrounds/<%= background._id %>/review" method="post">
+        <div class="mb-3">
+            <label for="body" class="form-label">Enter Your Review</label>
+            <textarea name="body" id="body" cols="30" rows="5" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="rating">Rating</label>
+            <input type="range" class="form-range" min="0" max="5" name="rating" id="rating">
+        </div>
+        <button class="btn-submit-review">Submit Review</button>
+    </form>
+</div>
+
+    
+    <form action="/campgrounds">
+        <button class="btn-back">Back To Home</button>
+    </form>
+</div>

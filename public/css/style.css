@@ -1,0 +1,606 @@
+/* ==========================
+   🌟 GLOBAL STYLES
+   ========================== */
+   body {
+    background: #121212; /* Deep Black for a Rich Look */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================
+   🌟 NAVBAR - Premium Feel
+   ========================== */
+.navbar {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar:hover {
+    box-shadow: 0px 6px 15px rgba(255, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #e50914; /* Netflix Red */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #ddd;
+    margin: 0 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+/* ==========================
+   🌟 FOOTER - Minimal & Elegant
+   ========================== */
+.footer {
+    background: #222;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.footer .navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.footer .nav-link {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer .nav-link:hover {
+    color: #fff;
+}
+
+.footer p {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* ==========================
+   🌟 MAIN CONTAINER
+   ========================== */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ==========================
+   🌟 PAGE TITLE
+   ========================== */
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #e50914;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* ==========================
+   🌟 CAMP LIST - Premium Grid Layout
+   ========================== */
+.campground-list {
+    list-style: none;
+    padding: 0;
+}
+
+.campground-item {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+
+.campground-item:hover {
+    box-shadow: 0px 6px 18px rgba(255, 0, 0, 0.3);
+}
+
+.camp-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* ==========================
+   🌟 BUTTONS - Premium & Consistent
+   ========================== */
+button {
+    display: inline-block;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 130px;
+    text-align: center;
+}
+
+/* Visit Button */
+.btn-visit {
+    background: #e50914;
+    color: white;
+}
+
+.btn-visit:hover {
+    background: #b20710;
+}
+
+/* Edit Button */
+.btn-edit {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #e68900;
+}
+
+/* Delete Button */
+.btn-delete {
+    background: #444;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #333;
+}
+
+/* Add New Campground Button */
+.btn-add {
+    background: #00875a;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-add:hover {
+    background: #006f47;
+}
+
+/* ==========================
+   🌟 BUTTON GROUPING - Proper Alignment
+   ========================== */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+/* ==========================
+   🌟 BACK TO HOMEPAGE BUTTON
+   ========================== */
+.button-link {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    width: 48%;
+    background: #444;
+    color: white;
+}
+
+.button-link:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+/* ==========================
+   🌟 EDIT FORM STYLING
+   ========================== */
+   .edit-form-container {
+    max-width: 600px;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    margin: 40px auto;
+}
+
+.edit-form-container h2 {
+    color: #e50914; /* Netflix Red */
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+/* Labels */
+.edit-form-container label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+/* Input fields */
+.edit-form-container input,
+.edit-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* Textarea Resizing */
+.edit-form-container textarea {
+    resize: vertical;
+}
+
+/* Submit & Back Button */
+.edit-form-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.edit-form-container button {
+    display: inline-block;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 48%;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: #e50914; /* Netflix Red */
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
+
+/* Back Button */
+.btn-back {
+    background: #444;
+    color: white;
+}
+
+.btn-back:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   🌟 RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 768px) {
+    .edit-form-container {
+        padding: 20px;
+    }
+
+    .edit-form-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .edit-form-container .button-group {
+        flex-direction: column;
+    }
+
+    .edit-form-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+/* Fix the button width for better fit */
+.btn-add {
+    display: block; /* Makes it occupy full width */
+    width: 200px; /* Adjust width to fit content */
+    margin: 20px auto; /* Centers it properly */
+    text-align: center;
+}
+/* ==========================
+   🌟 ADD NEW CAMPGROUND FORM
+   ========================== */
+   .add-campground-form {
+    max-width: 500px;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    margin: 40px auto;
+    text-align: center;
+}
+
+.add-campground-form input,
+.add-campground-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.add-campground-form textarea {
+    resize: vertical;
+}
+
+/* Labels */
+.add-campground-form label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Buttons */
+.add-campground-form .btn-submit {
+    background: #e50914; /* Netflix Red */
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-campground-form .btn-submit:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
+
+/* Back Button */
+.add-campground-form .btn-back {
+    background: #444;
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.add-campground-form .btn-back:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   🌟 RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 600px) {
+    .add-campground-form {
+        padding: 20px;
+    }
+
+    .add-campground-form input,
+    .add-campground-form textarea {
+        font-size: 0.9rem;
+    }
+}
+/* ==========================
+   🌟 SHOW PAGE IMAGE STYLING
+   ========================== */
+   .details-container img {
+    display: block; /* Ensures it's treated as a block element */
+    max-width: 100%;
+    max-height: 450px; /* Prevents it from getting too large */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensures the whole image is visible */
+    border-radius: 12px;
+    margin: 20px auto; /* Centers it horizontally */
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.details-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.2);
+}
+.campground-item img {
+    width: 100%; /* Ensures full width of container */
+    height: 180px; /* Fixed height for a rectangular look */
+    object-fit: cover; /* Ensures it covers the box without stretching */
+    border-radius: 8px; /* Smooth edges */
+}
+
+
+/* ==========================
+   🌟 ANIMATIONS (Minimal & Smooth)
+   ========================== */
+
+/* Fade-in effect for smooth appearance */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle button pulse effect on hover */
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ==========================
+   🌟 APPLYING ANIMATIONS
+   ========================== */
+
+/* Navbar fade-in effect */
+.navbar {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Campground cards fade-in effect */
+.campground-item {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Images smooth scale effect */
+.campground-item img:hover,
+.details-container img:hover {
+    transform: scale(1.02);
+}
+
+/* Minimal button animation */
+button:hover {
+    animation: buttonPulse 0.3s ease-in-out forwards;
+}
+/* ==========================
+   🌟 REVIEWS SECTION STYLING
+   ========================== */
+   .review-container {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+}
+
+.review-container h2 {
+    color: #e50914; /* Netflix Red */
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+}
+
+.review-list li {
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 10px rgba(255, 0, 0, 0.2);
+    margin-bottom: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.review-list li:hover {
+    box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.review-body {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.review-rating {
+    font-size: 0.9rem;
+    color: #ffcc00; /* Gold for a rating-like effect */
+    font-weight: bold;
+}
+
+/* Style for review form */
+.review-form {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+}
+
+.review-form label {
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.review-form textarea {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    width: 100%;
+    padding: 10px;
+    resize: vertical;
+}
+
+.review-form input[type="range"] {
+    width: 100%;
+}
+
+/* Review submit button */
+.btn-submit-review {
+    background: #e50914;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-submit-review:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}

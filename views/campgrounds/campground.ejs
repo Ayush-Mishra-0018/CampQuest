@@ -1,0 +1,26 @@
+<% layout("./layouts/boiler.ejs") %>
+<div class="container">
+    <h1 class="page-title">Campgrounds</h1>
+    <ul class="campground-list">
+        <% for( let index of backgrounds) { %>
+            <li class="campground-item">
+                <img src="<%=index.image%>" alt="Image for <%=index.title%>">
+                <p class="camp-title">TITLE: <%= index.title %></p>
+                <div class="button-group">
+                    <form action="/campgrounds/<%= index._id %>" method="get">
+                        <button class="btn-visit">Visit</button>
+                    </form>
+                    <form action="/campgrounds/edit/<%= index._id %>">
+                        <button class="btn-edit">Edit</button>
+                    </form>
+                    <form action="/campgrounds/delete/<%= index._id %>?_method=DELETE" method="post">
+                        <button class="btn-delete">Delete</button>
+                    </form>
+                </div>
+            </li>
+        <% } %>
+    </ul>
+    <form action="/campgrounds/new" method="get">
+        <button class="btn-add">Add New Campground</button>
+    </form>
+</div>
