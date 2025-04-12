@@ -59,6 +59,7 @@ app.use(session(sessionConfig));
 const flash=require("connect-flash");
 app.use(flash())
 app.use((req,res,next)=>{
+    res.locals.result = req.session.user;
     res.locals.success=req.flash('success');
     res.locals.error=req.flash('error');
     next();

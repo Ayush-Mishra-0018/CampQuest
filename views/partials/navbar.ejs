@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top">
+<!-- <nav class="navbar navbar-expand-lg sticky-top">
     <a class="navbar-brand" href="#">YelpCamp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,6 +8,37 @@
             <a class="nav-item nav-link" href="/campgrounds">Home</a>
             <a class="nav-item nav-link" href="/campgrounds">CampGrounds</a>
             <a class="nav-item nav-link" href="/campgrounds/new">New CampGround</a>
+        </div>
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="#">CampQuest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <!-- Left side -->
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/campgrounds">Home</a>
+            <a class="nav-item nav-link" href="/campgrounds">Campgrounds</a>
+            <% if (result) { %>
+                <a class="nav-item nav-link" href="/campgrounds/new">New Campground</a>
+            <% } %>
+        </div>
+
+        <!-- Right side -->
+        <div class="navbar-nav ml-auto">
+            <% if (result) { %>
+                <form action="/logout" method="get" class="form-inline">
+                    <button class="btn btn-outline-danger btn-sm" type="submit">Logout</button>
+                </form>
+            <% } else { %>
+                <form action="/login" method="get" class="form-inline">
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Login</button>
+                </form>
+            <% } %>
         </div>
     </div>
 </nav>
