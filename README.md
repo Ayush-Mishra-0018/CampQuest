@@ -1,15 +1,19 @@
 # 🌲 CampQuest <br>
 
-A full-stack campground listing app inspired by YelpCamp. Currently, the project supports complete **CRUD operations** for Campgrounds and Reviews. <br>
-Built using **Node.js**, **Express**, and **MongoDB**. <br>
+A full-stack campground listing app inspired by YelpCamp. The project supports complete CRUD operations for Campgrounds and Reviews, along with authentication and authorization to ensure that only logged-in users can create content and only content owners can modify or delete it.<br>
 
 ---
 
-## ✨ Features <br>
+✨ Features <br>
+Create, Read, Update, Delete Campgrounds <br>
 
-- Create, Read, Update, Delete Campgrounds <br>
-- Add and Delete Reviews for Campgrounds <br>
-- Server-side validation and basic error handling <br>
+Add and Delete Reviews for Campgrounds <br>
+
+User Authentication and Authorization for Campgrounds and Reviews <br>
+
+Server-side Validation and Basic Error Handling <br>
+
+
 
 ---
 
@@ -25,9 +29,7 @@ Built using **Node.js**, **Express**, and **MongoDB**. <br>
 
 ## 🚧 Upcoming Features <br>
 
-- Authentication and Authorization <br>
 - Image Upload for Campgrounds <br>
-- Flash Messages and Error Pages <br>
 - Search and Filter functionality <br>
 
 ---
