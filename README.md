@@ -1,7 +1,6 @@
 # 🌲 CampQuest <br>
 
-A full-stack campground listing app inspired by YelpCamp. Currently, the project supports complete **CRUD operations** for Campgrounds and Reviews. <br>
-Built using **Node.js**, **Express**, and **MongoDB**. <br>
+A full-stack campground listing app inspired by YelpCamp. Currently, the project supports complete CRUD operations for Campgrounds and Reviews, with added authentication and authorization for both Campgrounds and Reviews. <br> Built using Node.js, Express, and MongoDB.<br>
 
 ---
 
