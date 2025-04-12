@@ -37,7 +37,7 @@ Server-side Validation and Basic Error Handling <br>
 ## 🏁 How to Run Locally <br>
 
 ```bash
-git clone https://github.com/Ayush-Mishra-0018/campquest.git
+git clone https://github.com/Ayush-Mishra-0018/CampQuest.git
 cd campquest
 npm install
 node app.js
