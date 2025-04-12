@@ -25,9 +25,7 @@ Built using **Node.js**, **Express**, and **MongoDB**. <br>
 
 ## 🚧 Upcoming Features <br>
 
-- Authentication and Authorization <br>
 - Image Upload for Campgrounds <br>
-- Flash Messages and Error Pages <br>
 - Search and Filter functionality <br>
 
 ---
