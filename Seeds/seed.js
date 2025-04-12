@@ -21,7 +21,8 @@ const seedDelete =async ()=>{
         title: `${descriptors[Math.floor(Math.random() * descriptors.length)]} ${places[Math.floor(Math.random() * places.length)]}`,
         price:price,
         description:`Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime nesciunt at rerum ullam saepe iusto officiis officia incidunt ut cupiditate sint perferendis, nostrum iure repellendus tempore, tenetur, aut vel inventore.`,
-        image: `https://picsum.photos/400?random=${Math.random()}`
+        image: `https://picsum.photos/400?random=${Math.random()}`,
+        author:'67fa2119d1a66bcb54ec838c'
 
     })
     await camp.save();

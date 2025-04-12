@@ -4,7 +4,7 @@ const Background=require("../Models/Background");
 const ExpressError=require("../helper/ExpressError");
 const WrapError=require("../helper/WrapError");
 const {schema1,schema2}=require("../schema");
-const {isLogin}=require("../middleware");
+const {isLogin,hasPermission}=require("../middleware");
 const ValidateReqBody=(req,res,next)=>{
     
     const result=schema1.validate(req.body);
@@ -16,11 +16,10 @@ const ValidateReqBody=(req,res,next)=>{
 
 
 router.get("/new",isLogin,WrapError(async (req,res)=>{
-    
     res.render("campgrounds/create");
 }))
-router.get("/edit/:id",isLogin,WrapError(async(req,res,next)=>{
- 
+router.get("/edit/:id",isLogin,hasPermission,WrapError(async(req,res,next)=>{
+    
     const id=req.params.id;
     const back=await Background.findById(id)
     if(!back){
@@ -29,7 +28,7 @@ router.get("/edit/:id",isLogin,WrapError(async(req,res,next)=>{
     }
     res.render("campgrounds/edit",{back});
 } ))
-router.delete("/delete/:id",isLogin,WrapError(async(req,res)=>{
+router.delete("/delete/:id",isLogin,hasPermission,WrapError(async(req,res)=>{
     const id=req.params.id;
     const back=await Background.findByIdAndDelete(id).populate("review");
     if(!back){
@@ -38,7 +37,7 @@ router.delete("/delete/:id",isLogin,WrapError(async(req,res)=>{
     req.flash('success','Campground Deleted Successfully');
     res.redirect("/campgrounds");
 } ))
-router.patch("/:id",ValidateReqBody,isLogin,WrapError(async (req,res,next)=>{
+router.patch("/:id",ValidateReqBody,isLogin,hasPermission,WrapError(async (req,res,next)=>{
     const id=req.params.id;
     const {title,price,description,location,image}=req.body;
     const back=await Background.findByIdAndUpdate(id,{title:title,location:location,price:price,description:description,image:image});
@@ -52,23 +51,29 @@ router.patch("/:id",ValidateReqBody,isLogin,WrapError(async (req,res,next)=>{
 }))
 router.get("/",WrapError(async (req,res)=>{
    const result=req.isAuthenticated();
-    const backgrounds= await Background.find({});
-    res.render("campgrounds/campground",{backgrounds,result}); 
+    const backgrounds= await Background.find({}).populate('author');
+    res.render("campgrounds/campground",{backgrounds,result,accessUser:req.user}); 
 }))
 router.get("/:id",WrapError(async (req,res)=>{
     const id=req.params.id;
-    const background= await Background.findById(id).populate("review");
-    if(!background){
+    const background = await Background.findById(id)
+    .populate('author') // still populate campground author
+    .populate({
+        path: 'review',
+        populate: { path: 'owner'} // populate the owner inside each review
+    });    if(!background){
         req.flash('error',"CouldNot Find The Campground");
         res.redirect('/campgrounds');
     }
-     res.render("campgrounds/specific",{background}); 
+     res.render("campgrounds/specific",{background,accessUser:req.user}); 
 }))
 
 router.post("/",ValidateReqBody,isLogin,WrapError(async (req,res,next)=>{
+    const u=req.user;
+    const userid=u._id;
     const{title,price,description,location,image}=req.body;
     const back=await Background.create({title:title,price:price,location:location,
-    description:description,image:image})
+    description:description,image:image,author:userid}) 
     req.flash("success","Campground Created Succesfully");
     res.redirect("/campgrounds");
 }))

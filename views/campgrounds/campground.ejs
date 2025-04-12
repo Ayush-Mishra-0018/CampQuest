@@ -10,7 +10,8 @@
                     <form action="/campgrounds/<%= index._id %>" method="get">
                         <button class="btn-visit">Visit</button>
                     </form>
-                    <% if(result) { %>
+                    <% if (result && accessUser._id.toString() === index.author._id.toString()) { %>
+
                     <form action="/campgrounds/edit/<%= index._id %>">
                         <button class="btn-edit">Edit</button>
                     </form>

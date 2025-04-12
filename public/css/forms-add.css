@@ -70,4 +70,11 @@
     .add-campground-form textarea {
         font-size: 0.9rem;
     }
+
 }
+.suggested-by {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #ccc;
+}
+

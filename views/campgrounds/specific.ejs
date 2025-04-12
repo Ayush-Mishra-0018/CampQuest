@@ -2,30 +2,38 @@
 
 <div class="details-container">
     <h1><%= background.title %></h1>
+    <p class="suggested-by">👤 Suggested By - <%= background.author.username %></p>
     <p>📍 Location: <%= background.location %></p>
     <img src="<%= background.image %>" alt="Image of <%= background.title %>">
     <p>📝 Description: <%= background.description %></p>
     <p>💰 Price: <%= background.price %></p>
-
-<div class="review-container">
-    <h2>Reviews</h2>
-    <% if (background.review.length > 0) { %>
-        <ul class="review-list">
-            <% background.review.forEach(review => { %>
-                <li>
-                    <p class="review-body">📝 <%= review.body %></p>
-                    <p class="review-rating">⭐ Rating: <%= review.rating %>/5</p>
-                </li>
-                <form action="/campgrounds/<%= background._id %>/review/<%= review._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-                
-            <% }); %>
-        </ul>
-    <% } else { %>
-        <p class="text-center text-muted">No reviews yet. Be the first to review! ✍️</p>
-    <% } %>
-</div>
+    
+    <div class="review-container">
+        <h2>Reviews</h2>
+        <% if (background.review.length > 0) { %>
+            <ul class="review-list">
+                <% background.review.forEach(review => { %>
+                    <li>
+                        <p class="review-body">📝 <%= review.body %></p>
+                        <p class="review-rating">⭐ Rating: <%= review.rating %>/5</p>
+                        <p class="review-author">👤 By: <%= review.owner ? review.owner.username : 'Unknown User' %></p>
+    
+                        <% if (
+                            accessUser && accessUser._id && review.owner &&
+                            (review.owner._id ? review.owner._id.toString() : review.owner.toString()) === accessUser._id.toString()
+                        ) { %>
+                            <form action="/campgrounds/<%= background._id %>/review/<%= review._id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p class="text-center text-muted">No reviews yet. Be the first to review! ✍️</p>
+        <% } %>
+    </div>
+    
 
 <!-- Review Submission Form -->
 <div class="review-form">

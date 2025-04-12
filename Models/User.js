@@ -8,6 +8,7 @@ const userschema=new Schema({
     unique:true
    }
 })
+
 userschema.plugin(passportlocalmongoose);
 const User=mongoose.model('User',userschema);
 module.exports=User;
