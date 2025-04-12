@@ -1,0 +1,18 @@
+.details-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 450px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.details-container img:hover,
+.campground-item img:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.2);
+}

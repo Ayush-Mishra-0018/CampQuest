@@ -1,0 +1,86 @@
+.edit-form-container {
+    max-width: 600px;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    margin: 40px auto;
+}
+
+.edit-form-container h2 {
+    color: #e50914;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.edit-form-container label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+.edit-form-container input,
+.edit-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.edit-form-container textarea {
+    resize: vertical;
+}
+
+.edit-form-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.edit-form-container button {
+    width: 48%;
+}
+
+.btn-submit {
+    background: #e50914;
+    color: white;
+}
+.btn-submit:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    background: #444;
+    color: white;
+}
+.btn-back:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .edit-form-container {
+        padding: 20px;
+    }
+
+    .edit-form-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .edit-form-container .button-group {
+        flex-direction: column;
+    }
+
+    .edit-form-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

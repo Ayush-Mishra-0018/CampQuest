@@ -1,0 +1,30 @@
+.footer {
+    background: #222;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.footer .navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.footer .nav-link {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer .nav-link:hover {
+    color: #fff;
+}
+
+.footer p {
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #888;
+}

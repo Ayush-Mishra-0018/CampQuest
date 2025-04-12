@@ -4,6 +4,7 @@ const Background=require("../Models/Background");
 const Review=require("../Models/review")
 const WrapError=require("../helper/WrapError");
 const {schema1,schema2}=require("../schema");
+const {isLogin}=require("../middleware");
 const ValidateReviewBody=(req,res,next)=>{
     
     const result=schema2.validate(req.body);
@@ -13,7 +14,7 @@ const ValidateReviewBody=(req,res,next)=>{
     next();
 }
 
-router.delete("/:revid",WrapError(async (req,res)=>{
+router.delete("/:revid",isLogin,WrapError(async (req,res)=>{
     const {id,revid}=req.params;
     const camp=await Background.findById(id);
     camp.review = camp.review.filter(reviewId => reviewId.toString() !== revid);
@@ -24,7 +25,7 @@ router.delete("/:revid",WrapError(async (req,res)=>{
     res.redirect(`/campgrounds/${id}`);
     
 }))
-router.post("/",ValidateReviewBody,WrapError(async (req,res)=>{
+router.post("/",ValidateReviewBody,isLogin,WrapError(async (req,res)=>{
     const id=req.params.id;
     const camp=await Background.findById(id);
 

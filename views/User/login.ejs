@@ -1,0 +1,17 @@
+<% layout('layouts/boiler') %>
+
+<form action="/login" method="post" class="register-form">
+    <input type="text" placeholder="Enter The UserName" name="username" required autocomplete="off">
+    <input type="password" placeholder="Enter The Password" name="password" required>
+
+    <button type="submit">Submit</button>
+
+    <div class="form-bottom">
+        <a href="/campgrounds" class="secondary-btn-link">Back To Home</a>
+        <div class="signup-block">
+            <p class="signup-text">Don’t have an account?</p>
+            <a href="/register" class="secondary-btn-link signup">Sign Up</a>
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,29 @@
+.navbar {
+    background: rgba(20, 20, 20, 0.95);
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.navbar:hover {
+    box-shadow: 0px 6px 15px rgba(255, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #ddd;
+    margin: 0 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+}

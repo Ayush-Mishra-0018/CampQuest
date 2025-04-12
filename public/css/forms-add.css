@@ -1,0 +1,73 @@
+.add-campground-form {
+    max-width: 500px;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    margin: 40px auto;
+    text-align: center;
+}
+
+.add-campground-form label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.add-campground-form input,
+.add-campground-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.add-campground-form textarea {
+    resize: vertical;
+}
+
+.add-campground-form .btn-submit,
+.add-campground-form .btn-back {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: none;
+}
+
+.add-campground-form .btn-submit {
+    background: #e50914;
+    color: white;
+}
+.add-campground-form .btn-submit:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
+
+.add-campground-form .btn-back {
+    background: #444;
+    color: white;
+    margin-top: 10px;
+}
+.add-campground-form .btn-back:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .add-campground-form {
+        padding: 20px;
+    }
+
+    .add-campground-form input,
+    .add-campground-form textarea {
+        font-size: 0.9rem;
+    }
+}

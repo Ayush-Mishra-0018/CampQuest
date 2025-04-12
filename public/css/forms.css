@@ -1,0 +1,114 @@
+/* 🌟 EDIT FORM STYLING */
+.edit-form-container,
+.add-campground-form {
+    max-width: 600px;
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    margin: 40px auto;
+    text-align: center;
+}
+
+.edit-form-container h2,
+.review-container h2 {
+    color: #e50914;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.edit-form-container label,
+.add-campground-form label,
+.review-form label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.edit-form-container input,
+.edit-form-container textarea,
+.add-campground-form input,
+.add-campground-form textarea,
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.edit-form-container .button-group,
+.add-campground-form .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.edit-form-container button,
+.add-campground-form .btn-submit,
+.review-form .btn-submit-review,
+.add-campground-form .btn-back,
+.edit-form-container .btn-back {
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 48%;
+}
+
+.add-campground-form .btn-submit,
+.review-form .btn-submit-review {
+    background: #e50914;
+    color: white;
+}
+.add-campground-form .btn-submit:hover,
+.review-form .btn-submit-review:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
+
+.add-campground-form .btn-back,
+.edit-form-container .btn-back {
+    background: #444;
+    color: white;
+}
+.add-campground-form .btn-back:hover,
+.edit-form-container .btn-back:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .add-campground-form,
+    .edit-form-container {
+        padding: 20px;
+    }
+
+    .add-campground-form input,
+    .edit-form-container input,
+    .add-campground-form textarea,
+    .edit-form-container textarea {
+        font-size: 0.9rem;
+    }
+
+    .edit-form-container .button-group {
+        flex-direction: column;
+    }
+
+    .edit-form-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

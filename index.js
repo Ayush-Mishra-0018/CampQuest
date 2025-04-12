@@ -4,18 +4,36 @@ const Joi=require("joi")
 const path=require("path")
 const app=express();
 const ejsMate = require('ejs-mate');
+const methodOverride = require("method-override");
+const bcrypt=require("bcrypt");
+const session=require("express-session")
+const ExpressError=require("./helper/ExpressError");
+const campgroundRoute=require("./Routers/campground");
+const reviewRoute=require("./Routers/review");
+const passport=require("passport")
+const localpassport=require("passport-local");
+const User=require("./Models/User");
+const userRouter=require("./Routers/user");
+
+(async ()=>{
+    try{
+await mongoose.connect('mongodb://127.0.0.1:27017/YELPCAMP')
+console.log("DATABASE IS SETUP ✅");
+}
+catch(e){
+    console.log("❌ Database Connection Failed:", e.message);
+}})();
+
+
+
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.engine('ejs', ejsMate)
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
-const session=require("express-session")
-const ExpressError=require("./helper/ExpressError");
-const campgroundRoute=require("./Routers/campground");
-const reviewRoute=require("./Routers/review");
+
 
 
 const sessionConfig = {
@@ -36,28 +54,28 @@ const sessionConfig = {
 
 
 
-(async ()=>{
-    try{
-await mongoose.connect('mongodb://127.0.0.1:27017/YELPCAMP')
-console.log("DATABASE IS SETUP ✅");
-}
-catch(e){
-    console.log("❌ Database Connection Failed:", e.message);
-}})();
+
 app.use(session(sessionConfig));
 const flash=require("connect-flash");
 app.use(flash())
 app.use((req,res,next)=>{
     res.locals.success=req.flash('success');
     res.locals.error=req.flash('error');
-
     next();
 })
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localpassport(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 
 
 
 app.use("/campgrounds",campgroundRoute);
 app.use("/campgrounds/:id/review",reviewRoute);
+app.use("/",userRouter);
 
 
 
