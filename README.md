@@ -4,11 +4,16 @@ A full-stack campground listing app inspired by YelpCamp. The project supports c
 
 ---
 
-## ✨ Features <br>
+✨ Features <br>
+Create, Read, Update, Delete Campgrounds <br>
 
-- Create, Read, Update, Delete Campgrounds <br>
-- Add and Delete Reviews for Campgrounds <br>
-- Server-side validation and basic error handling <br>
+Add and Delete Reviews for Campgrounds <br>
+
+User Authentication and Authorization for Campgrounds and Reviews <br>
+
+Server-side Validation and Basic Error Handling <br>
+
+
 
 ---
 
