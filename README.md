@@ -22,7 +22,7 @@ Server-side Validation and Basic Error Handling <br>
 **Backend:** Node.js, Express.js <br>
 **Database:** MongoDB, Mongoose <br>
 **Templating:** EJS <br>
-**Styling:** Bootstrap (optional / placeholder) <br>
+**Styling:** Bootstrap  <br>
 **Version Control:** Git & GitHub <br>
 
 ---
