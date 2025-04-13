@@ -4,6 +4,7 @@ const Background=require("../Models/Background");
 const Review=require("../Models/review")
 const WrapError=require("../helper/WrapError");
 const {schema1,schema2}=require("../schema");
+const ReviewController=require("../Controllers/review.js");
 const {isLogin,canUpdateReview}=require("../middleware");
 const ValidateReviewBody=(req,res,next)=>{
     
@@ -14,28 +15,11 @@ const ValidateReviewBody=(req,res,next)=>{
     next();
 }
 
-router.delete("/:revid",isLogin,canUpdateReview,WrapError(async (req,res)=>{
-    const {id,revid}=req.params;
-    const camp=await Background.findById(id);
-    camp.review = camp.review.filter(reviewId => reviewId.toString() !== revid);
-    await camp.save();
-    await Review.findByIdAndDelete(revid);
-    req.flash("success","Review Deleted Succesfully");
 
-    res.redirect(`/campgrounds/${id}`);
-    
-}))
-router.post("/",ValidateReviewBody,isLogin,WrapError(async (req,res)=>{
-    const id=req.params.id;
-    const camp=await Background.findById(id);
+router.delete("/:revid",isLogin,canUpdateReview,WrapError(ReviewController.delete))
 
-    const rating=Number(req.body.rating);
-    const body=req.body.body;
-    const rev=new Review({body,rating,owner:req.user._id});
-    await rev.save();
-    camp.review.push(rev);
-    await camp.save();
-    req.flash("success","Review Created Succesfully");
-    res.redirect(`/campgrounds/${id}`);
-}))
+
+router.post("/",ValidateReviewBody,isLogin,WrapError(ReviewController.create))
+
+
 module.exports=router;

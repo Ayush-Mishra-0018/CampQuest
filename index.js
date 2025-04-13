@@ -58,12 +58,9 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 const flash=require("connect-flash");
 app.use(flash())
-app.use((req,res,next)=>{
-    res.locals.result = req.session.user;
-    res.locals.success=req.flash('success');
-    res.locals.error=req.flash('error');
-    next();
-})
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localpassport(User.authenticate()));
@@ -72,7 +69,28 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-
+app.use((req, res, next) => {
+    const isStaticAsset = req.originalUrl.startsWith("/css") ||
+                          req.originalUrl.startsWith("/js") ||
+                          req.originalUrl.startsWith("/images") ||
+                          req.originalUrl.startsWith("/favicon.ico");
+    if (
+        req.method === "GET" &&
+        !req.originalUrl.includes("/login") &&
+        !req.originalUrl.includes("/register") &&
+        !req.originalUrl.includes("/logout") &&
+        !isStaticAsset
+    ) {
+        req.session.returnTo = req.originalUrl;
+    }
+    next();
+});
+app.use((req,res,next)=>{
+    res.locals.result = req.user;
+    res.locals.success=req.flash('success');
+    res.locals.error=req.flash('error');
+    next();
+})
 
 app.use("/campgrounds",campgroundRoute);
 app.use("/campgrounds/:id/review",reviewRoute);

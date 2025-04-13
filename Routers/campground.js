@@ -3,8 +3,10 @@ const router=express.Router();
 const Background=require("../Models/Background");
 const ExpressError=require("../helper/ExpressError");
 const WrapError=require("../helper/WrapError");
+const campgroundController=require("../Controllers/campground.js")
 const {schema1,schema2}=require("../schema");
 const {isLogin,hasPermission}=require("../middleware");
+
 const ValidateReqBody=(req,res,next)=>{
     
     const result=schema1.validate(req.body);
@@ -14,67 +16,36 @@ const ValidateReqBody=(req,res,next)=>{
     next();
 }
 
+router.route("/")
+    .get(WrapError(campgroundController.index))
+    .post(ValidateReqBody,isLogin,WrapError(campgroundController.create))
 
-router.get("/new",isLogin,WrapError(async (req,res)=>{
-    res.render("campgrounds/create");
-}))
-router.get("/edit/:id",isLogin,hasPermission,WrapError(async(req,res,next)=>{
-    
-    const id=req.params.id;
-    const back=await Background.findById(id)
-    if(!back){
-        req.flash('error',"CouldNot Find The Campground To Edit");
-        res.redirect('/campgrounds');
-    }
-    res.render("campgrounds/edit",{back});
-} ))
-router.delete("/delete/:id",isLogin,hasPermission,WrapError(async(req,res)=>{
-    const id=req.params.id;
-    const back=await Background.findByIdAndDelete(id).populate("review");
-    if(!back){
-        return next(new ExpressError("CouldNot Find The Product To Delete",500));
-    }
-    req.flash('success','Campground Deleted Successfully');
-    res.redirect("/campgrounds");
-} ))
-router.patch("/:id",ValidateReqBody,isLogin,hasPermission,WrapError(async (req,res,next)=>{
-    const id=req.params.id;
-    const {title,price,description,location,image}=req.body;
-    const back=await Background.findByIdAndUpdate(id,{title:title,location:location,price:price,description:description,image:image});
-    if(!back){
-         req.flash('error',"CouldNot Find The Campground To Edit");
-         res.redirect('/campgrounds');
-        }
-    
-    req.flash('success','Campground Edited Successfully');
-    res.redirect(`/campgrounds/${id}`);
-}))
-router.get("/",WrapError(async (req,res)=>{
-   const result=req.isAuthenticated();
-    const backgrounds= await Background.find({}).populate('author');
-    res.render("campgrounds/campground",{backgrounds,result,accessUser:req.user}); 
-}))
-router.get("/:id",WrapError(async (req,res)=>{
-    const id=req.params.id;
-    const background = await Background.findById(id)
-    .populate('author') // still populate campground author
-    .populate({
-        path: 'review',
-        populate: { path: 'owner'} // populate the owner inside each review
-    });    if(!background){
-        req.flash('error',"CouldNot Find The Campground");
-        res.redirect('/campgrounds');
-    }
-     res.render("campgrounds/specific",{background,accessUser:req.user}); 
-}))
 
-router.post("/",ValidateReqBody,isLogin,WrapError(async (req,res,next)=>{
-    const u=req.user;
-    const userid=u._id;
-    const{title,price,description,location,image}=req.body;
-    const back=await Background.create({title:title,price:price,location:location,
-    description:description,image:image,author:userid}) 
-    req.flash("success","Campground Created Succesfully");
-    res.redirect("/campgrounds");
-}))
+router.get("/new",isLogin,WrapError(campgroundController.renderNewForm))
+
+
+router.route("/:id")
+    .patch(ValidateReqBody,isLogin,hasPermission,WrapError(campgroundController.edit))
+    .get(WrapError(campgroundController.renderSpecificPage))
+
+
+
+router.get("/edit/:id",isLogin,hasPermission,WrapError(campgroundController.renderEditForm))
+
+
+router.delete("/delete/:id",isLogin,hasPermission,WrapError(campgroundController.delete))
+
+
+// router.patch("/:id",ValidateReqBody,isLogin,hasPermission,WrapError(campgroundController.edit))
+
+
+// router.get("/",WrapError(campgroundController.index))
+
+
+// router.get("/:id",WrapError(campgroundController.renderSpecificPage))
+
+
+// router.post("/",ValidateReqBody,isLogin,WrapError(campgroundController.create))
+
+
 module.exports=router;
